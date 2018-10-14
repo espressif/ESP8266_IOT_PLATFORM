@@ -489,7 +489,7 @@ finish:
     flash_erased=FALSE;
     free(precv_buf);
     
-    if(retry_count == UPGRADE_RETRY_TIMES){
+    if(retry_count >= UPGRADE_RETRY_TIMES){
         /*retry too many times, fail*/
         server->upgrade_flag = false;
         system_upgrade_flag_set(UPGRADE_FLAG_IDLE);
@@ -621,7 +621,7 @@ finish:
 		server->upgrade_flag = false;
         system_upgrade_flag_set(UPGRADE_FLAG_IDLE);	
 	} else {		
-		if(retry_count == UPGRADE_RETRY_TIMES){
+		if(retry_count >= UPGRADE_RETRY_TIMES){
 			/*retry too many times, fail*/
 			server->upgrade_flag = false;
 			system_upgrade_flag_set(UPGRADE_FLAG_IDLE);
